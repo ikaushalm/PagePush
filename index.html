@@ -40,6 +40,13 @@
             right: 10px;
             z-index: 1000;
         }
+        .chart-container {
+            position: relative;
+            height: 40vh;
+            width: 90%;
+            margin: 20px auto;
+        }
+        /* Enhanced table styling for light mode */
         .table-custom.light-mode {
             border: 2px solid #ddd;
             border-radius: 5px;
@@ -59,6 +66,7 @@
         .table-custom.light-mode tbody tr:hover {
             background-color: #e9ecef;
         }
+        /* Enhanced table styling for dark mode */
         .table-custom.dark-mode {
             border: 2px solid #333;
             border-radius: 5px;
@@ -77,12 +85,6 @@
         }
         .table-custom.dark-mode tbody tr:hover {
             background-color: #333;
-        }
-        .chart-container {
-            position: relative;
-            height: 40vh;
-            width: 80vw;
-            margin: 20px auto;
         }
     </style>
     <script>
@@ -244,11 +246,74 @@
         <canvas id="averageValueChart"></canvas>
     </div>
     
-    <h3>Average Values:</h3>
-    <p>Average Current Value for Correct Predictions: $23435.37</p>
-    <p>Average Current Value for Incorrect Predictions: $23515.80</p>
+    <h3>Win and Loss Counts:</h3>
+    <table border="1" class="dataframe table table-custom dark-mode">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wincount</th>
+      <th>Losscount</th>
+    </tr>
+    <tr>
+      <th>Betted On</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
     
-    <h3>Data:</h3>
+    <h3>Average Current Value:</h3>
+    <p>Correct Bets: $23435.37</p>
+    <p>Incorrect Bets: $23515.80</p>
+    
+    <h3>Summary Statistics by Bet Type:</h3>
+    <table border="1" class="dataframe table table-custom dark-mode">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Betted On</th>
+      <th>total_wins</th>
+      <th>total_losses</th>
+      <th>average_value</th>
+      <th>min_value</th>
+      <th>max_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>3</td>
+      <td>7</td>
+      <td>23450.080000</td>
+      <td>22891.08</td>
+      <td>23651.08</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>4</td>
+      <td>1</td>
+      <td>23531.496667</td>
+      <td>23453.58</td>
+      <td>23681.08</td>
+    </tr>
+  </tbody>
+</table>
+    
+    <h3>Data with Actual Bet Column:</h3>
     <button id="toggle-button" class="btn btn-primary" onclick="toggleContent()">Show Data with Actual Bet Column</button>
     <div id="actual-bet-data" class="toggle-content">
         <table border="1" class="dataframe table table-striped table-custom">
