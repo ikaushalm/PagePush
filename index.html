@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Roboto Mono', monospace;
@@ -22,16 +23,16 @@
             transition: width 0.3s;
         }
         .progress-bar-success.green {
-            background-color: #28a745; /* Bootstrap green */
+            background-color: #28a745;
         }
         .progress-bar-success.yellow {
-            background-color: #ffc107; /* Bootstrap yellow */
+            background-color: #ffc107;
         }
         .progress-bar-success.red {
-            background-color: #dc3545; /* Bootstrap red */
+            background-color: #dc3545;
         }
         .toggle-content {
-            display: none; /* Hidden by default */
+            display: none;
         }
         .toggle-button {
             position: fixed;
@@ -39,7 +40,6 @@
             right: 10px;
             z-index: 1000;
         }
-        /* Enhanced table styling for light mode */
         .table-custom.light-mode {
             border: 2px solid #ddd;
             border-radius: 5px;
@@ -59,7 +59,6 @@
         .table-custom.light-mode tbody tr:hover {
             background-color: #e9ecef;
         }
-        /* Enhanced table styling for dark mode */
         .table-custom.dark-mode {
             border: 2px solid #333;
             border-radius: 5px;
@@ -79,6 +78,12 @@
         .table-custom.dark-mode tbody tr:hover {
             background-color: #333;
         }
+        .chart-container {
+            position: relative;
+            height: 40vh;
+            width: 80vw;
+            margin: 20px auto;
+        }
     </style>
     <script>
         function toggleContent() {
@@ -97,7 +102,6 @@
             var body = document.body;
             var button = document.getElementById('mode-toggle');
             var tables = document.querySelectorAll('.table-custom');
-            var headers = document.querySelectorAll('th');
             
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
@@ -105,18 +109,111 @@
                 button.innerText = 'Dark Mode';
                 tables.forEach(table => table.classList.remove('dark-mode'));
                 tables.forEach(table => table.classList.add('light-mode'));
-                headers.forEach(th => th.classList.remove('dark-mode'));
-                headers.forEach(th => th.classList.add('light-mode'));
             } else {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
                 button.innerText = 'Light Mode';
                 tables.forEach(table => table.classList.remove('light-mode'));
                 tables.forEach(table => table.classList.add('dark-mode'));
-                headers.forEach(th => th.classList.remove('light-mode'));
-                headers.forEach(th => th.classList.add('dark-mode'));
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx1 = document.getElementById('successRateChart').getContext('2d');
+            var successRateChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['2024-08-25 21:54:10', '2024-08-25 21:54:57', '2024-08-25 21:55:50', '2024-08-25 21:56:47', '2024-08-25 21:57:37', '2024-08-25 21:58:29', '2024-08-25 21:59:25', '2024-08-25 22:00:18', '2024-08-25 22:01:13', '2024-08-25 22:02:02', '2024-08-25 22:02:54', '2024-08-25 22:03:45', '2024-08-25 22:04:42', '2024-08-25 22:05:35', '2024-08-25 22:06:23', '2024-08-25 22:07:14'],
+                    datasets: [{
+                        label: 'Correct Predictions',
+                        data: [1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0],
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Count'
+                            }
+                        }
+                    }
+                }
+            });
+
+            var ctx2 = document.getElementById('winLossChart').getContext('2d');
+            var winLossChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['A', 'B'],
+                    datasets: [
+                        {
+                            label: 'Wins',
+                            data: [3, 4],
+                            backgroundColor: '#007bff'
+                        },
+                        {
+                            label: 'Losses',
+                            data: [7, 1],
+                            backgroundColor: '#dc3545'
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Bet Type'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Count'
+                            }
+                        }
+                    }
+                }
+            });
+
+            var ctx3 = document.getElementById('averageValueChart').getContext('2d');
+            var averageValueChart = new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                    labels: ['A', 'B'],
+                    datasets: [{
+                        label: 'Average Current Value',
+                        data: [23450.08, 23531.49666666667],
+                        backgroundColor: ['#007bff', '#28a745']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': $' + tooltipItem.raw.toFixed(2);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </head>
 <body class="container dark-mode">
@@ -135,78 +232,26 @@
             46.67%
         </div>
     </div>
+
+    <h3>Charts:</h3>
+    <div class="chart-container">
+        <canvas id="successRateChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="winLossChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="averageValueChart"></canvas>
+    </div>
     
-    <h3>Win and Loss Counts:</h3>
-    <table border="1" class="dataframe table table-custom dark-mode">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Wincount</th>
-      <th>Losscount</th>
-    </tr>
-    <tr>
-      <th>Betted On</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A</th>
-      <td>3</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
+    <h3>Average Values:</h3>
+    <p>Average Current Value for Correct Predictions: $23435.37</p>
+    <p>Average Current Value for Incorrect Predictions: $23515.80</p>
     
-    <h3>Average Current Value:</h3>
-    <p>Correct Bets: 23435.37</p>
-    <p>Incorrect Bets: 23515.80</p>
-    
-    <h3>Summary Statistics by Bet Type:</h3>
-    <table border="1" class="dataframe table table-custom dark-mode">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Betted On</th>
-      <th>total_wins</th>
-      <th>total_losses</th>
-      <th>average_value</th>
-      <th>min_value</th>
-      <th>max_value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>A</td>
-      <td>3</td>
-      <td>7</td>
-      <td>23450.080000</td>
-      <td>22891.08</td>
-      <td>23651.08</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>B</td>
-      <td>4</td>
-      <td>1</td>
-      <td>23531.496667</td>
-      <td>23453.58</td>
-      <td>23681.08</td>
-    </tr>
-  </tbody>
-</table>
-    
-    <h3>Data with Actual Bet Column:</h3>
+    <h3>Data:</h3>
     <button id="toggle-button" class="btn btn-primary" onclick="toggleContent()">Show Data with Actual Bet Column</button>
     <div id="actual-bet-data" class="toggle-content">
-        <table border="1" class="dataframe table table-custom dark-mode">
+        <table border="1" class="dataframe table table-striped table-custom">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -401,6 +446,18 @@
       <td>1.0</td>
       <td>A</td>
       <td>True</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2024-08-25 22:07:14</td>
+      <td>B</td>
+      <td>23681.08</td>
+      <td>23950</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>A</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
