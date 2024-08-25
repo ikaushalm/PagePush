@@ -125,7 +125,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             var ctx1 = document.getElementById('successRateChart').getContext('2d');
-            var successRateChart = new Chart(ctx1, {
+            new Chart(ctx1, {
                 type: 'line',
                 data: {
                     labels: ['2024-08-25 21:54:10', '2024-08-25 21:54:57', '2024-08-25 21:55:50', '2024-08-25 21:56:47', '2024-08-25 21:57:37', '2024-08-25 21:58:29', '2024-08-25 21:59:25', '2024-08-25 22:00:18', '2024-08-25 22:01:13', '2024-08-25 22:02:02', '2024-08-25 22:02:54', '2024-08-25 22:03:45', '2024-08-25 22:04:42', '2024-08-25 22:05:35', '2024-08-25 22:06:23', '2024-08-25 22:07:14'],
@@ -160,7 +160,7 @@
             });
 
             var ctx2 = document.getElementById('winLossChart').getContext('2d');
-            var winLossChart = new Chart(ctx2, {
+            new Chart(ctx2, {
                 type: 'bar',
                 data: {
                     labels: ['A', 'B', nan],
@@ -196,7 +196,7 @@
             });
 
             var ctx3 = document.getElementById('averageValueChart').getContext('2d');
-            var averageValueChart = new Chart(ctx3, {
+            new Chart(ctx3, {
                 type: 'pie',
                 data: {
                     labels: ['A', 'B'],
@@ -224,7 +224,7 @@
             });
 
             var ctx4 = document.getElementById('scatterChart').getContext('2d');
-            var scatterChart = new Chart(ctx4, {
+            new Chart(ctx4, {
                 type: 'scatter',
                 data: {
                     datasets: [{
