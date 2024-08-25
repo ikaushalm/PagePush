@@ -43,8 +43,11 @@
         .chart-container {
             position: relative;
             height: 40vh;
-            width: 90%;
-            margin: 20px auto;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .row {
+            margin: 20px 0;
         }
         /* Enhanced table styling for light mode */
         .table-custom.light-mode {
@@ -140,6 +143,10 @@
                             title: {
                                 display: true,
                                 text: 'Time'
+                            },
+                            type: 'time',
+                            time: {
+                                unit: 'day'
                             }
                         },
                         y: {
@@ -156,16 +163,16 @@
             var winLossChart = new Chart(ctx2, {
                 type: 'bar',
                 data: {
-                    labels: ['A', 'B'],
+                    labels: ['A', 'B', nan],
                     datasets: [
                         {
                             label: 'Wins',
-                            data: [3, 4],
+                            data: [3.0, 4.0, 7.0],
                             backgroundColor: '#007bff'
                         },
                         {
                             label: 'Losses',
-                            data: [7, 1],
+                            data: [7.0, 1.0, 8.0],
                             backgroundColor: '#dc3545'
                         }
                     ]
@@ -215,6 +222,40 @@
                     }
                 }
             });
+
+            var ctx4 = document.getElementById('scatterChart').getContext('2d');
+            var scatterChart = new Chart(ctx4, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Value over Time',
+                        data: [{'Time': Timestamp('2024-08-25 21:54:10'), 'CurrentValue': 23453.58}, {'Time': Timestamp('2024-08-25 21:54:57'), 'CurrentValue': 23453.58}, {'Time': Timestamp('2024-08-25 21:55:50'), 'CurrentValue': 23501.08}, {'Time': Timestamp('2024-08-25 21:56:47'), 'CurrentValue': 23548.58}, {'Time': Timestamp('2024-08-25 21:57:37'), 'CurrentValue': 23498.58}, {'Time': Timestamp('2024-08-25 21:58:29'), 'CurrentValue': 23593.58}, {'Time': Timestamp('2024-08-25 21:59:25'), 'CurrentValue': 23641.08}, {'Time': Timestamp('2024-08-25 22:00:18'), 'CurrentValue': 23591.08}, {'Time': Timestamp('2024-08-25 22:01:13'), 'CurrentValue': 23491.08}, {'Time': Timestamp('2024-08-25 22:02:02'), 'CurrentValue': 23291.08}, {'Time': Timestamp('2024-08-25 22:02:54'), 'CurrentValue': 22891.08}, {'Time': Timestamp('2024-08-25 22:03:45'), 'CurrentValue': 23651.08}, {'Time': Timestamp('2024-08-25 22:04:42'), 'CurrentValue': 23601.08}, {'Time': Timestamp('2024-08-25 22:05:35'), 'CurrentValue': 23501.08}, {'Time': Timestamp('2024-08-25 22:06:23'), 'CurrentValue': 23301.08}, {'Time': Timestamp('2024-08-25 22:07:14'), 'CurrentValue': 23681.08}],
+                        backgroundColor: '#17a2b8',
+                        borderColor: '#17a2b8',
+                        showLine: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Current Value'
+                            }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </head>
@@ -234,46 +275,61 @@
             46.67%
         </div>
     </div>
-
-    <h3>Charts:</h3>
-    <div class="chart-container">
-        <canvas id="successRateChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="winLossChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="averageValueChart"></canvas>
-    </div>
     
     <h3>Win and Loss Counts:</h3>
     <table border="1" class="dataframe table table-custom dark-mode">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>Betted On</th>
       <th>Wincount</th>
       <th>Losscount</th>
-    </tr>
-    <tr>
-      <th>Betted On</th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>A</th>
-      <td>3</td>
-      <td>7</td>
+      <td>A</td>
+      <td>3.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
-      <th>B</th>
-      <td>4</td>
-      <td>1</td>
+      <td>B</td>
+      <td>4.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>NaN</td>
+      <td>7.0</td>
+      <td>8.0</td>
     </tr>
   </tbody>
 </table>
-    
+
+    <h3>Charts:</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart-container">
+                <canvas id="successRateChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-container">
+                <canvas id="winLossChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart-container">
+                <canvas id="averageValueChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-container">
+                <canvas id="scatterChart"></canvas>
+            </div>
+        </div>
+    </div>
+
     <h3>Average Current Value:</h3>
     <p>Correct Bets: $23435.37</p>
     <p>Incorrect Bets: $23515.80</p>
