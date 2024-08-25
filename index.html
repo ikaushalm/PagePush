@@ -40,11 +40,29 @@
             right: 10px;
             z-index: 1000;
         }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px; /* Space between charts */
+            height: 100vh; /* Full viewport height */
+            padding: 10px; /* Optional padding around the grid */
+        }
+
         .chart-container {
-            position: relative;
-            height: 40vh;
-            width: 90%;
-            margin: 20px auto;
+            background-color: #fff; /* Background color for containers */
+            border: 1px solid #ddd; /* Border around containers */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Padding inside containers */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a card-like effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            width: 100% !important; /* Make sure canvas takes full width of its container */
+            height: auto !important; /* Maintain aspect ratio */
         }
         /* Enhanced table styling for light mode */
         .table-custom.light-mode {
@@ -294,17 +312,21 @@
 </table>
 
     <h3>Charts:</h3>
-    <div class="chart-container">
-        <canvas id="successRateChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="winLossChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="averageValueChart"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="currentValueChart"></canvas>
+
+    <div class="chart-grid">
+        <div class="chart-container">
+            <canvas id="successRateChart"></canvas>
+        </div>
+         <div class="chart-container">
+            <canvas id="currentValueChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="winLossChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="averageValueChart"></canvas>
+        </div>
+       
     </div>
     
     <h3>Average Current Value:</h3>
