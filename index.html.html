@@ -1,0 +1,289 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .progress-bar-success {
+            transition: width 0.3s;
+        }
+        .progress-bar-success.green {
+            background-color: #28a745; /* Bootstrap green */
+        }
+        .progress-bar-success.yellow {
+            background-color: #ffc107; /* Bootstrap yellow */
+        }
+        .progress-bar-success.red {
+            background-color: #dc3545; /* Bootstrap red */
+        }
+        .toggle-content {
+            display: none; /* Hidden by default */
+        }
+        .toggle-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        /* Enhanced table styling for light mode */
+        .table-custom.light-mode {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .table-custom.light-mode thead th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table-custom.light-mode tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .table-custom.light-mode tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        .table-custom.light-mode tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        /* Enhanced table styling for dark mode */
+        .table-custom.dark-mode {
+            border: 2px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .table-custom.dark-mode thead th {
+            background-color: #444;
+            color: #e0e0e0;
+        }
+        .table-custom.dark-mode tbody tr:nth-child(even) {
+            background-color: #1e1e1e;
+        }
+        .table-custom.dark-mode tbody tr:nth-child(odd) {
+            background-color: #121212;
+        }
+        .table-custom.dark-mode tbody tr:hover {
+            background-color: #333;
+        }
+    </style>
+    <script>
+        function toggleContent() {
+            var content = document.getElementById('actual-bet-data');
+            var button = document.getElementById('toggle-button');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                button.innerText = 'Hide Data with Actual Bet Column';
+            } else {
+                content.style.display = 'none';
+                button.innerText = 'Show Data with Actual Bet Column';
+            }
+        }
+        
+        function toggleMode() {
+            var body = document.body;
+            var button = document.getElementById('mode-toggle');
+            var tables = document.querySelectorAll('.table-custom');
+            var headers = document.querySelectorAll('th');
+            
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                button.innerText = 'Dark Mode';
+                tables.forEach(table => table.classList.remove('dark-mode'));
+                tables.forEach(table => table.classList.add('light-mode'));
+                headers.forEach(th => th.classList.remove('dark-mode'));
+                headers.forEach(th => th.classList.add('light-mode'));
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                button.innerText = 'Light Mode';
+                tables.forEach(table => table.classList.remove('light-mode'));
+                tables.forEach(table => table.classList.add('dark-mode'));
+                headers.forEach(th => th.classList.remove('light-mode'));
+                headers.forEach(th => th.classList.add('dark-mode'));
+            }
+        }
+    </script>
+</head>
+<body class="container dark-mode">
+    <button id="mode-toggle" class="btn btn-secondary toggle-button" onclick="toggleMode()">Light Mode</button>
+    
+    <h2 class="mt-4">Detailed Analysis</h2>
+    
+    <h3>Success Rate:</h3>
+    <div class="progress">
+        <div class="progress-bar progress-bar-success green"
+            role="progressbar"
+            style="width: 60.00%;"
+            aria-valuenow="60.00"
+            aria-valuemin="0"
+            aria-valuemax="100">
+            60.00%
+        </div>
+    </div>
+    
+    <h3>Win and Loss Counts:</h3>
+    <table border="1" class="dataframe table table-custom dark-mode">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wincount</th>
+      <th>Losscount</th>
+    </tr>
+    <tr>
+      <th>Betted On</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+    
+    <h3>Average Current Value:</h3>
+    <p>Correct Bets: 23286.08</p>
+    <p>Incorrect Bets: 23300.25</p>
+    
+    <h3>Summary Statistics by Bet Type:</h3>
+    <table border="1" class="dataframe table table-custom dark-mode">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Betted On</th>
+      <th>total_wins</th>
+      <th>total_losses</th>
+      <th>average_value</th>
+      <th>min_value</th>
+      <th>max_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>0</td>
+      <td>1</td>
+      <td>23366.08</td>
+      <td>23366.08</td>
+      <td>23366.08</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>3</td>
+      <td>1</td>
+      <td>23278.58</td>
+      <td>23216.08</td>
+      <td>23318.58</td>
+    </tr>
+  </tbody>
+</table>
+    
+    <h3>Data with Actual Bet Column:</h3>
+    <button id="toggle-button" class="btn btn-primary" onclick="toggleContent()">Show Data with Actual Bet Column</button>
+    <div id="actual-bet-data" class="toggle-content">
+        <table border="1" class="dataframe table table-custom dark-mode">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Betted On</th>
+      <th>CurrentValue</th>
+      <th>TargetAmt</th>
+      <th>Losscount</th>
+      <th>Wincount</th>
+      <th>Next Wincount</th>
+      <th>Actual Bet</th>
+      <th>Correct Prediction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2024-08-25 20:30:27</td>
+      <td>B</td>
+      <td>23271.08</td>
+      <td>23400</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>B</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-08-25 20:31:16</td>
+      <td>B</td>
+      <td>23271.08</td>
+      <td>23400</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>B</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2024-08-25 20:32:00</td>
+      <td>B</td>
+      <td>23318.58</td>
+      <td>23400</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2024-08-25 20:32:48</td>
+      <td>A</td>
+      <td>23366.08</td>
+      <td>23400</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024-08-25 20:33:35</td>
+      <td>B</td>
+      <td>23316.08</td>
+      <td>23400</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>B</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</body>
+</html>
