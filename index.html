@@ -143,10 +143,10 @@
             var successRateChart = new Chart(ctx1, {
                 type: 'line',
                 data: {
-                    labels: ['2024-09-03 01:41:59', '2024-09-03 01:42:51', '2024-09-03 01:43:32'],
+                    labels: ['2024-09-03 06:08:22', '2024-09-03 06:09:16', '2024-09-03 06:10:07', '2024-09-03 06:11:03', '2024-09-03 06:11:50', '2024-09-03 06:12:39', '2024-09-03 06:13:26', '2024-09-03 06:14:13', '2024-09-03 06:15:02', '2024-09-03 06:15:53', '2024-09-03 06:16:37', '2024-09-03 06:17:27', '2024-09-03 06:18:15', '2024-09-03 06:19:01', '2024-09-03 06:19:47', '2024-09-03 06:20:36', '2024-09-03 06:21:21', '2024-09-03 06:22:13', '2024-09-03 06:23:00', '2024-09-03 06:23:50'],
                     datasets: [{
                         label: 'Correct Predictions',
-                        data: [0, 1, 0],
+                        data: [0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0],
                         borderColor: '#28a745',
                         backgroundColor: 'rgba(40, 167, 69, 0.2)',
                         fill: true
@@ -178,12 +178,12 @@
                     datasets: [
                         {
                             label: 'Wins',
-                            data: [1, 0, 1],
+                            data: [3, 3, 6],
                             backgroundColor: '#007bff'
                         },
                         {
                             label: 'Losses',
-                            data: [1, 1, 2],
+                            data: [8, 11, 19],
                             backgroundColor: '#dc3545'
                         }
                     ]
@@ -213,7 +213,7 @@
                     labels: ['A', 'B'],
                     datasets: [{
                         label: 'Average Current Value',
-                        data: [40633.56, 40611.06],
+                        data: [39771.685, 40218.35166666666],
                         backgroundColor: ['#007bff', '#28a745']
                     }]
                 },
@@ -238,10 +238,10 @@
             var currentValueChart = new Chart(ctx4, {
                 type: 'line',
                 data: {
-                    labels: ['2024-09-03 01:41:59', '2024-09-03 01:42:51', '2024-09-03 01:43:32'],
+                    labels: ['2024-09-03 06:08:22', '2024-09-03 06:09:16', '2024-09-03 06:10:07', '2024-09-03 06:11:03', '2024-09-03 06:11:50', '2024-09-03 06:12:39', '2024-09-03 06:13:26', '2024-09-03 06:14:13', '2024-09-03 06:15:02', '2024-09-03 06:15:53', '2024-09-03 06:16:37', '2024-09-03 06:17:27', '2024-09-03 06:18:15', '2024-09-03 06:19:01', '2024-09-03 06:19:47', '2024-09-03 06:20:36', '2024-09-03 06:21:21', '2024-09-03 06:22:13', '2024-09-03 06:23:00', '2024-09-03 06:23:50'],
                     datasets: [{
                         label: 'Current Value',
-                        data: [40636.06, 40586.06, 40633.56],
+                        data: [40681.06, 40631.06, 40678.56, 40628.56, 40528.56, 40671.06, 40718.56, 40668.56, 40568.56, 40418.56, 40168.56, 39768.56, 39118.56, 40116.06, 39716.06, 38666.06, 36966.06, 39578.56, 40576.06, 39926.06],
                         borderColor: '#007bff',
                         backgroundColor: 'rgba(0, 123, 255, 0.2)',
                         fill: true
@@ -273,13 +273,13 @@
     
     <h3>Success Rate:</h3>
     <div class="progress">
-        <div class="progress-bar progress-bar-success yellow"
+        <div class="progress-bar progress-bar-success red"
             role="progressbar"
-            style="width: 50.00%;"
-            aria-valuenow="50.00"
+            style="width: 31.58%;"
+            aria-valuenow="31.58"
             aria-valuemin="0"
             aria-valuemax="100">
-            50.00%
+            31.58%
         </div>
     </div>
 
@@ -295,18 +295,18 @@
   <tbody>
     <tr>
       <td>A</td>
-      <td>1</td>
-      <td>1</td>
+      <td>3</td>
+      <td>8</td>
     </tr>
     <tr>
       <td>B</td>
-      <td>0</td>
-      <td>1</td>
+      <td>3</td>
+      <td>11</td>
     </tr>
     <tr>
       <td>Total</td>
-      <td>1</td>
-      <td>2</td>
+      <td>6</td>
+      <td>19</td>
     </tr>
   </tbody>
 </table>
@@ -336,8 +336,8 @@
 
     
     <h3>Average Current Value:</h3>
-    <p>Correct Bets: $40586.06</p>
-    <p>Incorrect Bets: $40634.81</p>
+    <p>Correct Bets: $39582.31</p>
+    <p>Incorrect Bets: $40235.70</p>
     
     <h3>Summary Statistics by Bet Type:</h3>
     <table border="1" class="dataframe table table-custom dark-mode">
@@ -356,20 +356,20 @@
     <tr>
       <th>0</th>
       <td>A</td>
-      <td>1</td>
-      <td>1</td>
-      <td>40633.56</td>
-      <td>40633.56</td>
-      <td>40633.56</td>
+      <td>3</td>
+      <td>8</td>
+      <td>39771.685000</td>
+      <td>36966.06</td>
+      <td>40678.56</td>
     </tr>
     <tr>
       <th>1</th>
       <td>B</td>
-      <td>0</td>
-      <td>1</td>
-      <td>40611.06</td>
-      <td>40586.06</td>
-      <td>40636.06</td>
+      <td>3</td>
+      <td>11</td>
+      <td>40218.351667</td>
+      <td>38666.06</td>
+      <td>40718.56</td>
     </tr>
   </tbody>
 </table>
@@ -395,10 +395,10 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>2024-09-03 01:41:59</td>
+      <td>2024-09-03 06:08:22</td>
       <td>B</td>
-      <td>40636.06</td>
-      <td>40650</td>
+      <td>40681.06</td>
+      <td>41100</td>
       <td>0</td>
       <td>0</td>
       <td>0.0</td>
@@ -407,10 +407,10 @@
     </tr>
     <tr>
       <th>1</th>
-      <td>2024-09-03 01:42:51</td>
+      <td>2024-09-03 06:09:16</td>
       <td>B</td>
-      <td>40586.06</td>
-      <td>40650</td>
+      <td>40631.06</td>
+      <td>41100</td>
       <td>1</td>
       <td>0</td>
       <td>1.0</td>
@@ -419,14 +419,218 @@
     </tr>
     <tr>
       <th>2</th>
-      <td>2024-09-03 01:43:32</td>
+      <td>2024-09-03 06:10:07</td>
       <td>A</td>
-      <td>40633.56</td>
-      <td>40650</td>
+      <td>40678.56</td>
+      <td>41100</td>
       <td>1</td>
       <td>1</td>
-      <td>NaN</td>
+      <td>0.0</td>
       <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2024-09-03 06:11:03</td>
+      <td>A</td>
+      <td>40628.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024-09-03 06:11:50</td>
+      <td>B</td>
+      <td>40528.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>B</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2024-09-03 06:12:39</td>
+      <td>B</td>
+      <td>40671.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>B</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2024-09-03 06:13:26</td>
+      <td>B</td>
+      <td>40718.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2024-09-03 06:14:13</td>
+      <td>A</td>
+      <td>40668.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2024-09-03 06:15:02</td>
+      <td>B</td>
+      <td>40568.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024-09-03 06:15:53</td>
+      <td>A</td>
+      <td>40418.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2024-09-03 06:16:37</td>
+      <td>B</td>
+      <td>40168.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2024-09-03 06:17:27</td>
+      <td>B</td>
+      <td>39768.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2024-09-03 06:18:15</td>
+      <td>A</td>
+      <td>39118.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>A</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2024-09-03 06:19:01</td>
+      <td>A</td>
+      <td>40116.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>B</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2024-09-03 06:19:47</td>
+      <td>B</td>
+      <td>39716.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2024-09-03 06:20:36</td>
+      <td>B</td>
+      <td>38666.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2024-09-03 06:21:21</td>
+      <td>A</td>
+      <td>36966.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>A</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2024-09-03 06:22:13</td>
+      <td>A</td>
+      <td>39578.56</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>A</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2024-09-03 06:23:00</td>
+      <td>B</td>
+      <td>40576.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>A</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2024-09-03 06:23:50</td>
+      <td>B</td>
+      <td>39926.06</td>
+      <td>41100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>A</td>
       <td>False</td>
     </tr>
   </tbody>
